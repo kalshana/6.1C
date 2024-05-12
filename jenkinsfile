@@ -9,7 +9,7 @@ pipeline {
             post {
                 success {
                     mail to: "karrar.alshanan@gmail.com",
-                    subject: "Build Status Email",
+                    subject: "Build Status Email - Success",
                     body: "Build was successful!"
                 }
             }
@@ -26,13 +26,13 @@ pipeline {
                     mail to: "karrar.alshanan@gmail.com",
                     subject: "Test Status Email - Success",
                     body: "Unit and integration tests passed successfully.",
-                    attachmentsPattern: "**/*.log"
+                    // Attach log files here
                 }
                 failure {
                     mail to: "karrar.alshanan@gmail.com",
                     subject: "Test Status Email - Failure",
                     body: "Unit and integration tests failed.",
-                    attachmentsPattern: "**/*.log"
+                    // Attach log files here
                 }
             }
         }
@@ -54,13 +54,13 @@ pipeline {
                     mail to: "karrar.alshanan@gmail.com",
                     subject: "Security Scan Status Email - Success",
                     body: "Security scan passed successfully.",
-                    attachmentsPattern: "**/*.log"
+                    // Attach log files here if necessary
                 }
                 failure {
                     mail to: "karrar.alshanan@gmail.com",
                     subject: "Security Scan Status Email - Failure",
                     body: "Security scan failed.",
-                    attachmentsPattern: "**/*.log"
+                    // Attach log files here
                 }
             }
         }
