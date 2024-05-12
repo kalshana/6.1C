@@ -12,6 +12,11 @@ pipeline {
                     subject: "Build Status Email - Success",
                     body: "Build was successful!"
                 }
+                failure {
+                    mail to: "karrar.alshanan@gmail.com",
+                    subject: "Build Status Email - Failure",
+                    body: "Build failed!"
+                }
             }
         }
         stage("Test") {
@@ -25,14 +30,12 @@ pipeline {
                 success {
                     mail to: "karrar.alshanan@gmail.com",
                     subject: "Test Status Email - Success",
-                    body: "Unit and integration tests passed successfully.",
-                    // Attach log files here
+                    body: "Unit and integration tests passed successfully."
                 }
                 failure {
                     mail to: "karrar.alshanan@gmail.com",
                     subject: "Test Status Email - Failure",
-                    body: "Unit and integration tests failed.",
-                    // Attach log files here
+                    body: "Unit and integration tests failed."
                 }
             }
         }
@@ -53,14 +56,12 @@ pipeline {
                 success {
                     mail to: "karrar.alshanan@gmail.com",
                     subject: "Security Scan Status Email - Success",
-                    body: "Security scan passed successfully.",
-                    // Attach log files here if necessary
+                    body: "Security scan passed successfully."
                 }
                 failure {
                     mail to: "karrar.alshanan@gmail.com",
                     subject: "Security Scan Status Email - Failure",
-                    body: "Security scan failed.",
-                    // Attach log files here
+                    body: "Security scan failed."
                 }
             }
         }
