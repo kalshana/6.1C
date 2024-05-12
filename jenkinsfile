@@ -20,6 +20,19 @@ pipeline {
                 // Add unit and integration test
                 // For unit tests, use JUnit
                 // For integration tests, use Selenium
+             post {
+                success {
+                    mail to: "karrar.alshanan@gmail.com",
+                    subject: "Test Status Email - Success",
+                    body: "Unit and integration tests passed successfully.",
+                    attachmentsPattern: "**/*.log"
+                }
+                failure {
+                    mail to: "karrar.alshanan@gmail.com",
+                    subject: "Test Status Email - Failure",
+                    body: "Unit and integration tests failed.",
+                    attachmentsPattern: "**/*.log"
+                }
             }
         }
         stage("Code Analysis") {
@@ -34,6 +47,20 @@ pipeline {
                 echo "Performing security scan ..."
                 // Add security scan
                 // Use OWASP ZAP or Snyk for security scanning
+            }
+            post {
+                success {
+                    mail to: "karrar.alshanan@gmail.com",
+                    subject: "Security Scan Status Email - Success",
+                    body: "Security scan passed successfully.",
+                    attachmentsPattern: "**/*.log"
+                }
+                failure {
+                    mail to: "karrar.alshanan@gmail.com",
+                    subject: "Security Scan Status Email - Failure",
+                    body: "Security scan failed.",
+                    attachmentsPattern: "**/*.log"
+                }
             }
         }
         stage("Deploy to Staging") {
