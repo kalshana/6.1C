@@ -20,7 +20,8 @@ pipeline {
                 // Add unit and integration test
                 // For unit tests, use JUnit
                 // For integration tests, use Selenium
-             post {
+            }
+            post {
                 success {
                     mail to: "karrar.alshanan@gmail.com",
                     subject: "Test Status Email - Success",
@@ -80,8 +81,8 @@ pipeline {
         stage("Deploy to Production") {
             steps {
                 echo "Deploying to production server ..."
-                // dDeployment to production serve
-                // Use Jenkins with AWS
+                // Deployment to production server
+                // Use Jenkins with AWS CLI or AWS CodeDeploy to deploy to an AWS EC2 instance
             }
         }
         stage("Complete") {
