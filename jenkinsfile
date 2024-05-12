@@ -1,33 +1,66 @@
-pipeline{
+pipeline {
     agent any
-    stages{
-        stage("Build"){
-            steps{
+    stages {
+        stage("Build") {
+            steps {
                 echo "Building ..."
+                // Build automation using MAVEN
             }
-            post{
-                success{
+            post {
+                success {
                     mail to: "karrar.alshanan@gmail.com",
                     subject: "Build Status Email",
                     body: "Build was successful!"
-
                 }
             }
         }
-        stage("Test"){
-            steps{
+        stage("Test") {
+            steps {
                 echo "Testing ..."
+                // Add unit and integration test
+                // For unit tests, use JUnit
+                // For integration tests, use Selenium
             }
         }
-        stage("Deploy"){
-            steps{
-                echo "Deploying ..."
-            }   
+        stage("Code Analysis") {
+            steps {
+                echo "Performing code analysis ..."
+                // Integrate SonarQube analysis
+                // Use SonarQube plugin for Jenkins
+            }
         }
-        stage("Complete"){
-            steps{
+        stage("Security Scan") {
+            steps {
+                echo "Performing security scan ..."
+                // Add security scan
+                // Use OWASP ZAP or Snyk for security scanning
+            }
+        }
+        stage("Deploy to Staging") {
+            steps {
+                echo "Deploying to staging server ..."
+                // Add deployment to staging server
+                // Use Jenkins with AWS CLI or AWS CodeDeploy to deploy to an AWS EC2 instance
+            }
+        }
+        stage("Integration Tests on Staging") {
+            steps {
+                echo "Running integration tests on staging ..."
+                // Add integration tests on staging
+                // Use Selenium for automated browser testing
+            }
+        }
+        stage("Deploy to Production") {
+            steps {
+                echo "Deploying to production server ..."
+                // dDeployment to production serve
+                // Use Jenkins with AWS
+            }
+        }
+        stage("Complete") {
+            steps {
                 echo "Completed ."
-            }   
+            }
         }
     }
 }
